@@ -1,15 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 
-import App from './components/app';
-import reducers from './reducers';
+//unlike libraries (which are namespaced) we need to import our own files with a file path
+import SearchBar from './components/search_bar';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const API_KEY = 'AIzaSyAXP4htP7AJBlLpDUd4FnefgG5iDGJGPno'
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+// Create a new component, which should produce some HTML
+
+//Fat arrow is basically same as 'function'
+const App = () => {
+  //JSX allows us to use what looks like HTML as JavaScript
+  return (
+    <div>
+      <SearchBar />
+    </div>
+  );
+}
+
+// Take this component's generated HTML and put it on the page (in the DOM)
+ReactDOM.render(<App />, document.querySelector('.container'));
